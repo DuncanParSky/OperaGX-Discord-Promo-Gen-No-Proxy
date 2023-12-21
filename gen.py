@@ -1,5 +1,12 @@
-import requests, string, random, threading, time, ctypes, os, uuid
-from random import choice 
+import requests
+import string
+import random
+import threading
+import time
+import ctypes
+import os
+import uuid
+from random import choice
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -59,8 +66,12 @@ def gen(proxy):
 
 def main():
     num_threads = int(input(f"{get_timestamp()} {blue} Enter Number Of Threads : "))
-    with open("proxies.txt") as f:
-        proxies = f.read().splitlines()
+    proxies = []
+    try:
+        with open("proxies.txt") as f:
+            proxies = f.read().splitlines()
+    except FileNotFoundError:
+        pass
 
     threads = []
     for i in range(num_threads):
